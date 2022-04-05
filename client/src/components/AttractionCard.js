@@ -1,7 +1,7 @@
 import Button from './Button.js';
 import PropTypes from 'prop-types';
 import ReviewRating from './ReviewRating';
-import Terrain from './Terrain';
+import {Terrain} from './Terrain';
 import {
   Box,
   Flex,
@@ -29,8 +29,6 @@ export default function AttractionCard({
   const isActivity = attractionType === 'activity';
 
   const {name: locationName} = location ?? {};
-
-  console.log({name, terrain});
 
   const zoomAnimation = prefersReducedMotion
     ? {}

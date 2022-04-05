@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import Terrain from './Terrain';
 import {Box, Flex, HStack, Heading, Text, Wrap} from '@chakra-ui/react';
+import {Terrain} from './Terrain';
 
 const StatsItem = ({value, label, unit}) => (
   <Flex
