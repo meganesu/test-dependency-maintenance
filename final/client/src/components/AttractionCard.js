@@ -1,7 +1,6 @@
 import Button from './Button.js';
 import PropTypes from 'prop-types';
 import ReviewRating from './ReviewRating';
-import Terrain from './Terrain';
 import {
   Box,
   Flex,
@@ -11,6 +10,7 @@ import {
   usePrefersReducedMotion
 } from '@chakra-ui/react';
 import {Link} from 'react-router-dom';
+import {Terrain} from './Terrain';
 
 export default function AttractionCard({
   id,
@@ -29,8 +29,6 @@ export default function AttractionCard({
   const isActivity = attractionType === 'activity';
 
   const {name: locationName} = location ?? {};
-
-  console.log({name, terrain});
 
   const zoomAnimation = prefersReducedMotion
     ? {}

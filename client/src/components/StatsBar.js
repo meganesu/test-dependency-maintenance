@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Terrain from './Terrain';
+import {Terrain} from './Terrain';
 import {Box, Flex, HStack, Heading, Text, Wrap} from '@chakra-ui/react';
 
 const StatsItem = ({value, label, unit}) => (
