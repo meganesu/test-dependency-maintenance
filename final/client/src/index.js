@@ -11,13 +11,13 @@ import {
 import theme from './theme.js';
 import {ChakraProvider} from '@chakra-ui/react';
 
-const gqlServerAddress =
+const serverAddress =
   process.env.NODE_ENV !== 'production'
     ? 'http://localhost:4000'
     : process.env.REACT_APP_GQL_SERVER;
 
 const httpLink = createHttpLink({
-  uri: gqlServerAddress
+  uri: serverAddress
 });
 
 const client = new ApolloClient({
