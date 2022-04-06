@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@apollo/subgraph": "^2.0.0-preview.8",
+    "@apollo/subgraph": "^2.0.0-preview.9",
     "apollo-server": "^3.4.0",
     "fs": "0.0.1-security",
     "graphql": "^16.0.0",
