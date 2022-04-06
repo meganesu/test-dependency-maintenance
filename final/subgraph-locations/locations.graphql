@@ -1,7 +1,7 @@
 extend schema
   @link(url: "https://specs.apollo.dev/federation/v2.0",
         import: ["@key", "@external"])
-
+        
 type Query {
   "The full list of locations presented by the Interplanetary Space Tourism department"
   locations: [Location!]!
@@ -49,6 +49,7 @@ interface Attraction {
   photo: String!
   "The terrain for an attraction"
   terrain: Terrain!
+
 }
 
 type Location implements Attraction @key(fields: "id"){
