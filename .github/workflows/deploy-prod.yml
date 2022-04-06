@@ -28,7 +28,7 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: flyby-lab-activities-sg
+          heroku_app_name: flyby-lab-activities-sub
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
           appdir: "final/subgraph-activities"
       - name: Deploy gateway
