@@ -5,7 +5,7 @@ const {buildSubgraphSchema} = require('@apollo/subgraph');
 const typeDefs = gql(readFileSync('./activities.graphql', {encoding: 'utf-8'}));
 
 const resolvers = require('./resolvers');
-const ActivitiesAPI = require('./datasources/ActivitiesApi');
+const ActivitiesAPI = require('./datasources/ActivitiesApi.js');
 
 const server = new ApolloServer({
     schema: buildSubgraphSchema({typeDefs, resolvers}),
