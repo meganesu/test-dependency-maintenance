@@ -15,7 +15,7 @@ const server = new ApolloServer({
   }
 });
 
-const port = 4002;
+const port = process.env.PORT || 4002;
 const subgraphName = 'reviews';
 
 server
