@@ -13,6 +13,7 @@ updates:
       - dependency-type: "direct"
     labels:
       - "starter code"
+      - "dependencies"
   - package-ecosystem: "npm"
     directory: "/gateway"
     schedule:
@@ -21,6 +22,7 @@ updates:
       - dependency-type: "direct"
     labels:
       - "starter code"
+      - "dependencies"
   - package-ecosystem: "npm"
     directory: "/subgraph-activities"
     schedule:
@@ -29,6 +31,7 @@ updates:
       - dependency-type: "direct"
     labels:
       - "starter code"
+      - "dependencies"
   - package-ecosystem: "npm"
     directory: "/subgraph-locations"
     schedule:
@@ -37,6 +40,7 @@ updates:
       - dependency-type: "direct"
     labels:
       - "starter code"
+      - "dependencies"
   - package-ecosystem: "npm"
     directory: "/subgraph-reviews"
     schedule:
@@ -45,6 +49,7 @@ updates:
       - dependency-type: "direct"
     labels:
       - "starter code"
+      - "dependencies"
   - package-ecosystem: "npm"
     directory: "/final/client"
     schedule:
@@ -63,6 +68,7 @@ updates:
       - dependency-type: "direct"
     labels:
       - "final code"
+      - "dependencies"
   - package-ecosystem: "npm"
     directory: "/final/subgraph-activities"
     schedule:
@@ -77,6 +83,7 @@ updates:
       - dependency-type: "direct"
     labels:
       - "final code"
+      - "dependencies"
   - package-ecosystem: "npm"
     directory: "/final/subgraph-reviews"
     schedule:
@@ -85,3 +92,4 @@ updates:
       - dependency-type: "direct"
     labels:
       - "final code"
+      - "dependencies"
