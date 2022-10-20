@@ -50,9 +50,11 @@ updates:
     schedule:
       interval: "daily"
     allow:
-      - dependency-type: "direct"
+      - "graphql"
+      - "@apollo/client"
     labels:
       - "final code"
+      - "dependencies"
   - package-ecosystem: "npm"
     directory: "/final/gateway"
     schedule:
