@@ -9,39 +9,59 @@ updates:
     directory: "/client"
     schedule:
       interval: "daily"
+    allow:
+      - dependency-type: "direct"
   - package-ecosystem: "npm"
     directory: "/gateway"
     schedule:
       interval: "daily"
+    allow:
+      - dependency-type: "direct"
   - package-ecosystem: "npm"
     directory: "/subgraph-activities"
     schedule:
       interval: "daily"
+    allow:
+      - dependency-type: "direct"
   - package-ecosystem: "npm"
     directory: "/subgraph-locations"
     schedule:
       interval: "daily"
+    allow:
+      - dependency-type: "direct"
   - package-ecosystem: "npm"
     directory: "/subgraph-reviews"
     schedule:
       interval: "daily"
+    allow:
+      - dependency-type: "direct"
   - package-ecosystem: "npm"
     directory: "/final/client"
     schedule:
       interval: "daily"
+    allow:
+      - dependency-type: "direct"
   - package-ecosystem: "npm"
     directory: "/final/gateway"
     schedule:
       interval: "daily"
+    allow:
+      - dependency-type: "direct"
   - package-ecosystem: "npm"
     directory: "/final/subgraph-activities"
     schedule:
       interval: "daily"
+    allow:
+      - dependency-type: "direct"
   - package-ecosystem: "npm"
     directory: "/final/subgraph-locations"
     schedule:
       interval: "daily"
+    allow:
+      - dependency-type: "direct"
   - package-ecosystem: "npm"
     directory: "/final/subgraph-reviews"
     schedule:
       interval: "daily"
+    allow:
+      - dependency-type: "direct"
