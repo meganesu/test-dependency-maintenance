@@ -1,0 +1,21 @@
+name: Update Dependencies
+
+# Run every day at midnight UTC
+on:
+  schedule:
+    - cron: "52 * * * *"
+
+jobs:
+  update_deps:
+    if: github.repository_owner == "meganesu"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+      - run: npm update
+      - uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: "testing" #optional defaults to master
