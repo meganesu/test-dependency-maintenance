@@ -8,7 +8,7 @@ on:
 
 jobs:
   update_deps:
-    if: github.repository_owner == "meganesu"
+    if: github.repository_owner == 'meganesu'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
