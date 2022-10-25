@@ -1,5 +1,9 @@
 name: Update Dependencies
 
+env:
+  # For using the GitHub CLI:
+  GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
 on:
   [push]
   # Run every day at midnight UTC
