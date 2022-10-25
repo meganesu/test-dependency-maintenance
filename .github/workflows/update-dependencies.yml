@@ -25,6 +25,7 @@ jobs:
           node-version: 14
       - name: "npm install"
         run: |
+          npm install
           node utils/install.js
           node utils/install-final-dir.js
       - name: "npm update"
