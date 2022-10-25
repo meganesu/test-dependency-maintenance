@@ -16,8 +16,16 @@ jobs:
         with:
           node-version: 14
       - run: git checkout -b update-deps
-      - run: cd final/gateway && npm update && cd ../..
-      - run: cd final/subgraph-activities && npm update && cd ../..
+      - run: |
+          cd final/gateway
+          npm install
+          npm update
+          cd ../..
+      - run: |
+          cd final/subgraph-activities
+          npm install
+          npm update
+          cd ../..
       - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
