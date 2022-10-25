@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14
-      - run: git checkout testing
+      - run: git checkout -b update-deps
       - run: cd final/gateway && npm update && cd ../..
       - run: cd final/subgraph-activities && npm update && cd ../..
       - run: |
