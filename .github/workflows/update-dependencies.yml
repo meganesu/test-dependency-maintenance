@@ -26,8 +26,7 @@ jobs:
       - name: "npm install"
         run: |
           npm install
-          node utils/install.js
-          node utils/install-final-dir.js
+          npm run install-final
       - name: "npm update"
         run: node utils/update-deps.js
       - name: "Commit & push changes"
