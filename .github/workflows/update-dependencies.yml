@@ -12,12 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: "update-deps"
       - uses: actions/setup-node@v3
         with:
           node-version: 14
-      - run: |
-          git pull
-          git checkout update-deps
       - run: |
           cd final/gateway
           npm install
