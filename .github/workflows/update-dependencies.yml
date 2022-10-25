@@ -18,11 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: "update-deps"
       - uses: actions/setup-node@v3
         with:
           node-version: 14
+      - name: "Create new branch"
+        run: git checkout -b update-deps
       - name: "npm install"
         run: |
           npm install
