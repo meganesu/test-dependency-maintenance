@@ -15,7 +15,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14
-      - run: npm update
+      - run: cd final/gateway && npm update && cd ../..
+      - run: cd final/subgraph-activities && npm update & cd ../..
       - uses: mikeal/publish-to-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
