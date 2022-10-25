@@ -21,17 +21,14 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14
-      - run: |
-          cd final/gateway
-          npm install
-          npm update
-          cd ../..
-      - run: |
-          cd final/subgraph-activities
-          npm install
-          npm update
-          cd ../..
-      - run: |
+      - name: "npm install"
+        run: |
+          node utils/install.js
+          node utils/install-final-dir.js
+      - name: "npm update"
+        run: node utils/update-deps.js
+      - name: "Commit & push changes"
+        run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
