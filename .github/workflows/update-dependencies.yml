@@ -30,6 +30,9 @@ jobs:
         run: |
           git pull
           git branch
+          git log --oneline
+          echo "*********"
+          git remote -v
 
           # Check if a branch already exists with the specified BRANCH_NAME.
           CHECK_BRANCH_OUTPUT=$(git show-ref "refs/heads/${BRANCH_NAME}" | wc -l )
