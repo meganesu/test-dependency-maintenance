@@ -7,12 +7,15 @@ env:
   BRANCH_NAME: update-deps
 
 on:
-  push:
-    branches:
-      - main
-  # Run every day at midnight UTC
-  # schedule:
-  #   - cron: "52 * * * *"
+  # Run when changes pushed to main branch (Uncomment for debugging)
+  # push:
+  #   branches:
+  #     - main
+  schedule:
+    # Run every day at midnight UTC
+    # - cron: "0 0 * * *"
+    # (For testing) Run every hour
+    - cron: "18 * * * *"
 
 jobs:
   update_deps:
