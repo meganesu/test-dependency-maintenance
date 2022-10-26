@@ -3,6 +3,8 @@ name: Update Dependencies
 env:
   # For using the GitHub CLI:
   GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  # The branch to commit updates to
+  BRANCH_NAME: update-deps
 
 on:
   push:
@@ -21,8 +23,24 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14
-      - name: "Create new branch"
-        run: git checkout -b update-deps
+      - name: "Check out branch"
+        run: |
+          # Check if a branch already exists with the specified BRANCH_NAME.
+          CHECK_BRANCH_OUTPUT=$(git show-ref "refs/heads/${BRANCH_NAME}" | wc -l )
+          # Strip the spaces from CHECK_BRANCHES_OUTPUT.
+          # Will be set to 1 if a matching branch is found, or 0 otherwise.
+          DOES_BRANCH_EXIST=${CHECK_BRANCH_OUTPUT// }
+
+          # If it does, check it out
+          if [ $DOES_BRANCH_EXIST = 1 ]
+          then
+            echo "Checking out existing branch: ${BRANCH_NAME}"
+            git checkout $BRANCH_NAME
+          # If it doesn't, check out a new branch with that name
+          else
+            echo "Checking out a new branch: ${BRANCH_NAME}"
+            git checkout -b $BRANCH_NAME
+          fi
       - name: "npm install"
         run: |
           npm install
