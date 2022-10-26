@@ -50,12 +50,14 @@ jobs:
             echo "Checking out a new branch: ${BRANCH_NAME}"
             git checkout -b $BRANCH_NAME
           fi
-      - name: "npm install"
+      - name: "Install dependencies"
         run: |
           npm install
           node utils/install-final-dir.js
-      - name: "npm update"
-        run: node utils/update-deps.js
+      - name: "Update dependencies"
+        run: |
+          npm update
+          node utils/update-deps.js
       - name: "Commit & push changes"
         run: |
           git config user.name github-actions
@@ -63,4 +65,5 @@ jobs:
           git add .
           git commit -m "chore: updated dependencies"
           git push --set-upstream origin update-deps
-      - run: gh pr create --fill
+      - name: "Open pull request"
+        run: gh pr create --fill
