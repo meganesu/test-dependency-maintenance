@@ -15,7 +15,7 @@ on:
     # Run every day at midnight UTC
     # - cron: "0 0 * * *"
     # (For testing) Run every hour
-    - cron: "18 * * * *"
+    - cron: "32 * * * *"
 
 jobs:
   update_deps:
