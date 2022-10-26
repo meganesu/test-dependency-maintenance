@@ -30,7 +30,8 @@ jobs:
         run: |
           git pull
           git branch
-          git log --oneline
+          echo "*********"
+          git branch --remotes
           echo "*********"
           git remote -v
 
