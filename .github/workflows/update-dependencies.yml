@@ -28,6 +28,9 @@ jobs:
           node-version: 14
       - name: "Check out branch"
         run: |
+          git pull
+          git branch
+
           # Check if a branch already exists with the specified BRANCH_NAME.
           CHECK_BRANCH_OUTPUT=$(git show-ref "refs/heads/${BRANCH_NAME}" | wc -l )
           # Strip the spaces from CHECK_BRANCHES_OUTPUT.
