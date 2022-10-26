@@ -28,15 +28,11 @@ jobs:
           node-version: 14
       - name: "Check out branch"
         run: |
-          git pull
-          git branch
-          echo "*********"
           git branch --remotes
           echo "*********"
-          git remote -v
 
           # Check if a branch already exists with the specified BRANCH_NAME.
-          CHECK_BRANCH_OUTPUT=$(git show-ref "refs/heads/${BRANCH_NAME}" | wc -l )
+          CHECK_BRANCH_OUTPUT=$(git branch --remotes | grep "origin/${BRANCH_NAME}" | wc -l )
           # Strip the spaces from CHECK_BRANCHES_OUTPUT.
           # Will be set to 1 if a matching branch is found, or 0 otherwise.
           DOES_BRANCH_EXIST=${CHECK_BRANCH_OUTPUT// }
