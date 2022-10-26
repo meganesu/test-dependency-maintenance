@@ -5,6 +5,8 @@ env:
   GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
   # The branch to commit updates to
   BRANCH_NAME: update-deps
+  # The original owner's org (so that this Action won't run when students fork the repo)
+  ORIGINAL_REPO_OWNER: meganesu
 
 on:
   push:
@@ -16,7 +18,7 @@ on:
 
 jobs:
   update_deps:
-    if: github.repository_owner == 'meganesu'
+    if: github.repository_owner == $ORIGINAL_REPO_OWNER
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
