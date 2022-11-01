@@ -13,10 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@apollo/subgraph": "^0.1.2",
-    "apollo-server": "^3.4.0",
+    "@apollo/subgraph": "^0.1.5",
+    "apollo-server": "^3.10.4",
     "fs": "0.0.1-security",
-    "graphql": "^16.0.0",
-    "nodemon": "^2.0.13"
+    "graphql": "^16.6.0",
+    "nodemon": "^2.0.20"
   }
 }
