@@ -57,13 +57,32 @@ jobs:
           npm update
           node utils/update-deps.js
       - name: 'Commit & push changes'
+        id: commit_changes
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "chore: updated dependencies"
-          git push --set-upstream origin update-deps
+          OUTPUT=$(git status)
+          echo $OUTPUT
+
+          # Check if there are unstaged changes to commit
+          CHECK_FOR_UNSTAGED_CHANGES=$(echo $OUTPUT | grep "Changes not staged for commit:" | wc -l)
+          # Strip the spaces from CHECK_FOR_UNSTAGED_CHANGES.
+          # Will be set to 1 if there are changes to be commited, or 0 otherwise.
+          UNSTAGED_CHANGES_EXIST=${CHECK_FOR_UNSTAGED_CHANGES// }
+
+          if [ UNSTAGED_CHANGES_EXIST = 1 ]
+          then
+            # Commit and push changes
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add .
+            git commit -m "chore: updated dependencies"
+            git push --set-upstream origin update-deps
+
+            # Set an output, to be checked in the next step
+            echo "committedChanges=UNSTAGED_CHANGES_EXIST" >> $GITHUB_OUTPUT
+          fi
       - name: 'Open pull request'
+        # Only run this step if there were changes committed in the previous step
+        if: steps.commit_changes.outputs.committedChanges == 1
         run: |
           # Show status of relevant pull requests
           OUTPUT=$(gh pr status)
