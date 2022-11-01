@@ -68,10 +68,7 @@ jobs:
           # Will be set to 1 if there are changes to be commited, or 0 otherwise.
           UNSTAGED_CHANGES_EXIST=${CHECK_FOR_UNSTAGED_CHANGES// }
 
-          echo "CHECK_FOR_UNSTAGED_CHANGES: $CHECK_FOR_UNSTAGED_CHANGES"
-          echo "UNSTAGED_CHANGES_EXIST: $UNSTAGED_CHANGES_EXIST"
-
-          if [ UNSTAGED_CHANGES_EXIST = 1 ]
+          if [ $UNSTAGED_CHANGES_EXIST = 1 ]
           then
             # Commit and push changes
             git config user.name github-actions
