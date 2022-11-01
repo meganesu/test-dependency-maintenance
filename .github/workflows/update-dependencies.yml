@@ -59,11 +59,11 @@ jobs:
       - name: 'Commit & push changes'
         id: commit_changes
         run: |
-          OUTPUT=$(git status)
-          echo $OUTPUT
+          git status
+          echo "*********"
 
           # Check if there are unstaged changes to commit
-          CHECK_FOR_UNSTAGED_CHANGES=$(echo $OUTPUT | grep "Changes not staged for commit:" | wc -l)
+          CHECK_FOR_UNSTAGED_CHANGES=$(git status | grep "Changes not staged for commit:" | wc -l)
           # Strip the spaces from CHECK_FOR_UNSTAGED_CHANGES.
           # Will be set to 1 if there are changes to be commited, or 0 otherwise.
           UNSTAGED_CHANGES_EXIST=${CHECK_FOR_UNSTAGED_CHANGES// }
@@ -85,12 +85,11 @@ jobs:
         # Only run this step if there were changes committed in the previous step
         if: steps.commit_changes.outputs.committedChanges == 'true'
         run: |
-          # Show status of relevant pull requests
-          OUTPUT=$(gh pr status)
-          echo $OUTPUT
+          gh pr status
+          echo "*********"
 
           # Check if a pull request already exists for the current branch (BRANCH_NAME).
-          CHECK_FOR_NO_PR=$(echo $OUTPUT | grep "There is no pull request associated with \[$BRANCH_NAME\]" | wc -l )
+          CHECK_FOR_NO_PR=$(gh pr status | grep "There is no pull request associated with \[$BRANCH_NAME\]" | wc -l )
           # Strip the spaces from CHECK_FOR_NO_PR.
           # Will be set to 1 if no PR is found for the current branch, or 0 if a PR exists.
           NO_PR_EXISTS=${CHECK_FOR_NO_PR// }
