@@ -85,10 +85,6 @@ jobs:
         # Only run this step if there were changes committed in the previous step
         if: steps.commit_changes.outputs.committedChanges == 'true'
         run: |
-          # For debugging
-          echo "Output of commit step:"
-          echo $steps.commit_changes.outputs.committedChanges
-
           # Show status of relevant pull requests
           OUTPUT=$(gh pr status)
           echo $OUTPUT
