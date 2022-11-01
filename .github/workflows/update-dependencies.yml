@@ -8,12 +8,12 @@ env:
 
 on:
   # Run when changes pushed to main branch (Uncomment for debugging)
-  push:
-    branches:
-      - main
-  # schedule:
-  #   # Run every day at midnight UTC
-  #   - cron: '0 0 * * *'
+  # push:
+  #   branches:
+  #     - main
+  schedule:
+    # Run every day at midnight UTC
+    - cron: '0 0 * * *'
 
 jobs:
   update_deps:
