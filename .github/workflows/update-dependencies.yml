@@ -65,8 +65,12 @@ jobs:
           git push --set-upstream origin update-deps
       - name: 'Open pull request'
         run: |
+          # Show status of relevant pull requests
+          OUTPUT=$(gh pr status)
+          echo $OUTPUT
+
           # Check if a pull request already exists for the current branch (BRANCH_NAME).
-          CHECK_FOR_NO_PR=$(gh pr status | grep "There is no pull request associated with \[$BRANCH_NAME\]" | wc -l )
+          CHECK_FOR_NO_PR=$(echo $OUTPUT | grep "There is no pull request associated with \[$BRANCH_NAME\]" | wc -l )
           # Strip the spaces from CHECK_FOR_NO_PR.
           # Will be set to 1 if no PR is found for the current branch, or 0 if a PR exists.
           NO_PR_EXISTS=${CHECK_FOR_NO_PR// }
