@@ -75,15 +75,20 @@ jobs:
             git config user.email github-actions@github.com
             git add .
             git commit -m "chore: updated dependencies"
-            git push --set-upstream origin update-deps
+            git push --set-upstream origin $BRANCH_NAME
+            echo "Pushed changes to remote branch $BRANCH_NAME"
 
             # Set an output, to be checked in the next step
-            echo "committedChanges=UNSTAGED_CHANGES_EXIST" >> $GITHUB_OUTPUT
+            echo "committedChanges=true" >> $GITHUB_OUTPUT
           fi
       - name: 'Open pull request'
         # Only run this step if there were changes committed in the previous step
-        if: steps.commit_changes.outputs.committedChanges == 1
+        if: steps.commit_changes.outputs.committedChanges == true
         run: |
+          # For debugging
+          echo "Output of commit step:"
+          echo $steps.commit_changes.outputs.committedChanges
+
           # Show status of relevant pull requests
           OUTPUT=$(gh pr status)
           echo $OUTPUT
