@@ -1,11 +1,14 @@
+# What to call this GitHub Action workflow in the GitHub browser UI
 name: Update Dependencies
 
+# Set up environment variables for this runner
 env:
-  # For using the GitHub CLI:
+  # For using `gh`, the GitHub CLI (to create a PR):
   GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-  # The branch to commit updates to
+  # The branch to commit updated dependency versions to
   BRANCH_NAME: update-deps
 
+# When to run this GitHub Action
 on:
   # Run when changes pushed to main branch (Uncomment for debugging)
   # push:
@@ -13,10 +16,12 @@ on:
   #     - main
   schedule:
     # Run every day at midnight UTC
+    # Note: During peak load times, GitHub may delay this time
     - cron: '0 0 * * *'
 
 jobs:
-  update_deps:
+  update_deps: # job name
+    # Only run this GitHub Action on the original repo, not on forks
     if: github.repository_owner == 'meganesu'
     runs-on: ubuntu-latest
     steps:
