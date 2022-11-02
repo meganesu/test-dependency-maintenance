@@ -62,7 +62,6 @@ jobs:
           npm update
           node utils/update-deps.js
       - name: 'Commit & push changes'
-        id: commit_changes
         run: |
           git status
           echo "*********"
@@ -82,13 +81,8 @@ jobs:
             git commit -m "chore: updated dependencies"
             git push --set-upstream origin $BRANCH_NAME
             echo "Pushed changes to remote branch $BRANCH_NAME"
-
-            # Set an output, to be checked in the next step
-            echo "committedChanges=true" >> $GITHUB_OUTPUT
           fi
       - name: 'Open pull request'
-        # Only run this step if there were changes committed in the previous step
-        if: steps.commit_changes.outputs.committedChanges == 'true'
         run: |
           gh pr status
           echo "*********"
