@@ -88,10 +88,9 @@ jobs:
           echo "*********"
 
           # Check if an open pull request already exists for the current branch.
-          CHECK_FOR_OPEN_PR=$(gh pr status --json number,state --jq ".currentBranch?.state")
-          # Strip the spaces from CHECK_FOR_OPEN_PR.
-          # Will be set to "OPEN" if PR is found for the current branch, or 0 if a PR exists.
-          CURRENT_BRANCH_PR_STATE=${CHECK_FOR_OPEN_PR// }
+          # Will be set to "OPEN" if PR is found for the current branch.
+          # Otherwise, may be set to "CLOSED", "MERGED", or empty string (if no PRs exist for current branch yet).
+          CURRENT_BRANCH_PR_STATE=$(gh pr status --json number,state --jq ".currentBranch?.state")
 
           # If there isn't a PR for this branch yet, create one.
           if [ "$CURRENT_BRANCH_PR_STATE" != "OPEN" ]
