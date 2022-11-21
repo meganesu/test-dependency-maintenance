@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/apollographql-education/odyssey-voyage-I-lab#readme",
   "dependencies": {
-    "concurrently": "^7.5.0"
+    "concurrently": "^7.6.0"
   }
 }
