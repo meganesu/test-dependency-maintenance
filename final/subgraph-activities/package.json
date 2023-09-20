@@ -16,7 +16,7 @@
     "@apollo/subgraph": "^2.5.5",
     "apollo-server": "^3.12.1",
     "fs": "0.0.1-security",
-    "graphql": "^16.8.0",
+    "graphql": "^16.8.1",
     "nodemon": "^2.0.22"
   }
 }
